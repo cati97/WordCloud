@@ -10,10 +10,9 @@ import { Dispatch } from 'redux';
 
 interface Props {
   login: (data: User) => void;
-  user: User | null | undefined;
 }
 
-const Login = ({ login, user }: Props) => {
+const Login = ({ login }: Props) => {
   const { control, handleSubmit } = useForm<FieldValues>({
     defaultValues: { nickname: '' },
   });
@@ -44,16 +43,10 @@ const Login = ({ login, user }: Props) => {
   );
 };
 
-const mapStateToProps = (state: GameState | undefined) => {
-  return {
-    user: state?.user,
-  };
-};
-
 const mapDispatchToProps = (dispatch: Dispatch<UserAction>) => {
   return {
     login: (data: User) => dispatch(login(data)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapDispatchToProps)(Login);
