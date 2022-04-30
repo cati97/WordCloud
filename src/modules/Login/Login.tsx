@@ -2,14 +2,28 @@ import { Button, Typography } from '@mui/material';
 import TextInput from 'components/Inputs/TextInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import * as S from './Login.css';
+import { login } from 'store/actions/index';
+import { connect } from 'react-redux';
+import { User } from 'utils/types/User';
+import { UserAction, GameState } from 'store/store.types';
+import { Dispatch } from 'redux';
 
-const Login = () => {
+interface Props {
+  login: (data: User) => void;
+  user: User | null | undefined;
+}
+
+const Login = ({ login, user }: Props) => {
   const { control, handleSubmit } = useForm<FieldValues>({
     defaultValues: { nickname: '' },
   });
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
+    const newUser = {
+      nickname: data.nickname,
+      score: 0,
+    };
+    login(newUser);
   };
 
   return (
@@ -30,4 +44,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state: GameState | undefined) => {
+  return {
+    user: state?.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<UserAction>) => {
+  return {
+    login: (data: User) => dispatch(login(data)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
