@@ -4,7 +4,7 @@ import Login from './modules/Login';
 const App = () => {
   return (
     <div className='App'>
-      <Login></Login>
+      <Login />
     </div>
   );
 };

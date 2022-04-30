@@ -19,23 +19,21 @@ const TextInput = ({
   fullWidth,
 }: Props) => {
   return (
-    <>
-      <Controller
-        name={name ?? ''}
-        control={control}
-        render={({ field: { name, onChange, value } }) => (
-          <TextField
-            name={name}
-            value={value}
-            onChange={onChange}
-            label={label}
-            disabled={disabled}
-            placeholder={placeholder}
-            fullWidth={fullWidth}
-          />
-        )}
-      />
-    </>
+    <Controller
+      name={name ?? ''}
+      control={control}
+      render={({ field: { name, onChange, value } }) => (
+        <TextField
+          name={name}
+          value={value}
+          onChange={onChange}
+          label={label}
+          disabled={disabled}
+          placeholder={placeholder}
+          fullWidth={fullWidth}
+        />
+      )}
+    />
   );
 };
 

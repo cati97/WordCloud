@@ -49,4 +49,4 @@ const mapDispatchToProps = (dispatch: Dispatch<UserAction>) => {
   };
 };
 
-export default connect(mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
