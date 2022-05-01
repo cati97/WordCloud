@@ -1,10 +1,10 @@
 import './App.css';
-import Login from './modules/Login';
+import AppRoutes from 'router/routes';
 
 const App = () => {
   return (
     <div className='App'>
-      <Login />
+      <AppRoutes />
     </div>
   );
 };
