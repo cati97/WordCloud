@@ -5,8 +5,9 @@ import * as S from './Login.css';
 import { login } from 'store/actions/index';
 import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
-import { UserAction, GameState } from 'store/store.types';
+import { UserAction } from 'store/store.types';
 import { Dispatch } from 'redux';
+import Container from 'components/Layout/Container';
 
 interface Props {
   login: (data: User) => void;
@@ -26,7 +27,7 @@ const Login = ({ login }: Props) => {
   };
 
   return (
-    <S.Container>
+    <Container>
       <S.LoginForm>
         <Typography variant='h3'>Wordcloud game</Typography>
         <TextInput
@@ -39,7 +40,7 @@ const Login = ({ login }: Props) => {
           Play
         </Button>
       </S.LoginForm>
-    </S.Container>
+    </Container>
   );
 };
 
