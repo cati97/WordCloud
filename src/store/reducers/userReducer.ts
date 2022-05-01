@@ -10,6 +10,8 @@ const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case ActionType.LOGIN:
       return { ...state, user: action.payload };
+    case ActionType.UPDATE_USER_SCORE:
+      return { ...state, user: action.payload };
     default:
       return state;
   }
