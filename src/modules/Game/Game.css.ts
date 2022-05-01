@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 
 interface WordBoxProps {
   color?: string;
+  pointerCursor?: boolean;
 }
 
 export const Question = styled(Typography)`
@@ -28,7 +29,7 @@ export const WordsBox = styled.div`
   border-radius: 5px;
   height: 70%;
   width: 45vw;
-  margin-top: 20px;
+  margin: 20px 0;
 `;
 
 export const WordBox = styled.div<WordBoxProps>`
@@ -37,5 +38,8 @@ export const WordBox = styled.div<WordBoxProps>`
   margin: 20px;
   padding: 20px;
   color: ${({ color }) => color};
-  cursor: pointer;
+  cursor: ${({ pointerCursor }) => (pointerCursor ? 'pointer' : 'auto')};
+  & > :first-child {
+    opacity: 70%;
+  }
 `;
