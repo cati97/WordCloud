@@ -8,6 +8,9 @@ import { User } from 'utils/types/User';
 import { UserAction } from 'store/store.types';
 import { Dispatch } from 'redux';
 import Container from 'components/Layout/Container';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import * as URL from 'router/url';
 
 interface Props {
   login: (data: User) => void;
@@ -18,12 +21,16 @@ const Login = ({ login }: Props) => {
     defaultValues: { nickname: '' },
   });
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data: FieldValues) => {
     const newUser = {
       nickname: data.nickname,
       score: 0,
     };
     login(newUser);
+    toast.success(`Welcome ${newUser.nickname}, let's play!`);
+    navigate(URL.GAME);
   };
 
   return (

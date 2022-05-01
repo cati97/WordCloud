@@ -1,11 +1,12 @@
-import './App.css';
 import AppRoutes from 'router/routes';
+import ToastProvider from 'components/ToastProvider';
 
 const App = () => {
   return (
-    <div className='App'>
+    <>
+      <ToastProvider />
       <AppRoutes />
-    </div>
+    </>
   );
 };
 
