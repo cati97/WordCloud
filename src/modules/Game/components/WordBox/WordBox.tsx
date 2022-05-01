@@ -1,5 +1,5 @@
 import { SetStateAction } from 'react';
-import * as S from '../Game.css';
+import * as S from '../../Game.css';
 
 interface Props {
   word: string;

@@ -3,7 +3,7 @@ import { mockedQuestions } from 'data/mockedQuestions';
 import { useMemo, useState } from 'react';
 import * as S from './Game.css';
 import { getRandomQuestion } from 'utils/getRandomQuestion';
-import WordBox from './WordBox';
+import WordBox from './components/WordBox';
 import { Button } from '@mui/material';
 import { evaluateWord } from 'utils/evaluateWord';
 import { getScore } from 'utils/getScore';
@@ -12,6 +12,8 @@ import { UserAction, GameState } from 'store/store.types';
 import { updateUserScore } from 'store/actions';
 import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
+import * as URL from 'router/url';
+import { useNavigate } from 'react-router';
 
 interface Props {
   updateUserScore: (data: User) => void;
@@ -21,6 +23,8 @@ interface Props {
 const Game = ({ updateUserScore, user }: Props) => {
   const [showAnswers, setShowAnswers] = useState(false);
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
+
+  const navigate = useNavigate();
 
   const randomQuestion = useMemo(() => {
     return getRandomQuestion(mockedQuestions);
@@ -38,7 +42,9 @@ const Game = ({ updateUserScore, user }: Props) => {
     }
   };
 
-  const finishGame = () => {};
+  const finishGame = () => {
+    navigate(URL.SCORE);
+  };
 
   return (
     <Container>
