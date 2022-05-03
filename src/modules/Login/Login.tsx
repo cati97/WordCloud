@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import TextInput from 'components/Inputs/TextInput';
-import { FieldValues, useForm } from 'react-hook-form';
+import { Control, useForm, FieldValues } from 'react-hook-form';
 import { login } from 'store/actions/index';
 import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
@@ -17,14 +17,23 @@ interface Props {
   login: (data: User) => void;
 }
 
+interface LoginFormFields {
+  nickname: string;
+}
+
 const Login = ({ login }: Props) => {
-  const { control, handleSubmit } = useForm<FieldValues>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormFields>({
     defaultValues: { nickname: '' },
+    mode: 'onBlur',
   });
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data: FieldValues) => {
+  const onSubmit = async (data: LoginFormFields) => {
     const newUser = {
       nickname: data.nickname,
       score: 0,
@@ -43,10 +52,13 @@ const Login = ({ login }: Props) => {
       >
         <Typography variant='h3'>Wordcloud game</Typography>
         <TextInput
-          control={control}
           name='nickname'
+          control={control}
+          errors={errors}
           placeholder='Enter your nickname here...'
           fullWidth
+          isRequired
+          minCharLength={4}
         />
         <OutlinedButton text='play' onClick={handleSubmit(onSubmit)} />
       </FlexBox>
