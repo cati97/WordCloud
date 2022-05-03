@@ -12,13 +12,10 @@ import { toast } from 'react-toastify';
 import * as URL from 'router/url';
 import FlexBox from 'components/Layout/FlexBox';
 import OutlinedButton from 'components/Button/OutlinedButton';
+import { LoginFormFields } from './Login.types';
 
 interface Props {
   login: (data: User) => void;
-}
-
-interface LoginFormFields {
-  nickname: string;
 }
 
 const Login = ({ login }: Props) => {
