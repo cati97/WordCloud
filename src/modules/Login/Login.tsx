@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import TextInput from 'components/Inputs/TextInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import { login } from 'store/actions/index';

@@ -30,9 +30,20 @@ const typography = {
   },
 };
 
+const components = {
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        textTransform: 'lowercase',
+      },
+    },
+  },
+};
+
 const theme = createTheme({
   typography,
   palette,
+  components,
 } as ThemeOptions);
 
 export default theme;
