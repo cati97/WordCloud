@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Container from 'components/Layout/Container';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -6,6 +6,7 @@ import { GameState } from 'store/store.types';
 import { User } from 'utils/types/User';
 import * as URL from 'router/url';
 import FlexBox from 'components/Layout/FlexBox';
+import OutlinedButton from 'components/Button/OutlinedButton';
 
 interface Props {
   user: User | null | undefined;
@@ -30,7 +31,7 @@ const Score = ({ user }: Props) => {
             Congratulations, {user.nickname}!
           </Typography>
           <Typography variant='h4'>Your score:</Typography>
-          <Typography color='primary' variant='h4'>
+          <Typography color='secondary' variant='h4'>
             {user.score} points
           </Typography>
         </FlexBox>
@@ -41,9 +42,7 @@ const Score = ({ user }: Props) => {
           flexDirection='column'
         >
           <Typography variant='h4'>You are not logged in!</Typography>
-          <Button variant='outlined' onClick={navigateHome}>
-            Login
-          </Button>
+          <OutlinedButton text='login' onClick={navigateHome} />
         </FlexBox>
       )}
     </Container>

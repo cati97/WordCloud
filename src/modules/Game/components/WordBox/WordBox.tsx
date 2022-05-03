@@ -1,5 +1,6 @@
 import { SetStateAction } from 'react';
 import * as S from '../../Game.css';
+import { getWordColor, getResult } from './utils';
 
 interface Props {
   word: string;
@@ -16,9 +17,8 @@ const WordBox = ({
   showAnswers,
   isWordCorrect,
 }: Props) => {
-  const wordColor = isWordSelected ? 'gray' : 'black';
-  const resultMsg = isWordCorrect ? 'Good' : 'Bad';
-  const resultColor = isWordCorrect ? 'green' : 'red';
+  const wordColor = getWordColor(isWordSelected);
+  const { msg: resultMsg, color: resultColor } = getResult(isWordCorrect);
   const onWordClick = () => {
     setSelectedWords((prev) => {
       if (!isWordSelected) {

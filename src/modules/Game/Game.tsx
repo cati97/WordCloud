@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react';
 import * as S from './Game.css';
 import { getRandomQuestion } from 'utils/getRandomQuestion';
 import WordBox from './components/WordBox';
-import { Button } from '@mui/material';
 import { evaluateWord } from 'utils/evaluateWord';
 import { getScore } from 'utils/getScore';
 import { Dispatch } from 'redux';
@@ -14,6 +13,7 @@ import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
 import * as URL from 'router/url';
 import { useNavigate } from 'react-router';
+import OutlinedButton from 'components/Button/OutlinedButton';
 
 interface Props {
   updateUserScore: (data: User) => void;
@@ -67,13 +67,9 @@ const Game = ({ updateUserScore, user }: Props) => {
           })}
         </S.WordsBox>
         {showAnswers ? (
-          <Button variant='outlined' onClick={finishGame}>
-            finish game
-          </Button>
+          <OutlinedButton text='finish game' onClick={finishGame} />
         ) : (
-          <Button variant='outlined' onClick={checkAnswers}>
-            check answers
-          </Button>
+          <OutlinedButton text='check answers' onClick={checkAnswers} />
         )}
       </S.GameBox>
     </Container>

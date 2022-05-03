@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import * as URL from 'router/url';
 import FlexBox from 'components/Layout/FlexBox';
+import OutlinedButton from 'components/Button/OutlinedButton';
 
 interface Props {
   login: (data: User) => void;
@@ -47,9 +48,7 @@ const Login = ({ login }: Props) => {
           placeholder='Enter your nickname here...'
           fullWidth
         />
-        <Button variant='outlined' onClick={handleSubmit(onSubmit)}>
-          Play
-        </Button>
+        <OutlinedButton text='play' onClick={handleSubmit(onSubmit)} />
       </FlexBox>
     </Container>
   );
