@@ -41,6 +41,7 @@ const Login = ({ login }: Props) => {
     login(newUser);
     toast.success(`Welcome ${newUser.nickname}, let's play!`);
     navigate(URL.GAME);
+    // TODO: connect with backend and add toast.error if nickname already exists
   };
 
   return (
