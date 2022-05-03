@@ -1,11 +1,14 @@
-import './App.css';
-import Login from './modules/Login';
+import AppRoutes from 'router/routes';
+import ToastProvider from 'components/ToastProvider';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './themes/theme';
 
 const App = () => {
   return (
-    <div className='App'>
-      <Login />
-    </div>
+    <ThemeProvider theme={theme}>
+      <ToastProvider />
+      <AppRoutes />
+    </ThemeProvider>
   );
 };
 
