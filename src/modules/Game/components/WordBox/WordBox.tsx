@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react';
+import { SetStateAction, useCallback, useMemo } from 'react';
 import * as S from '../../Game.css';
 import { getWordColor, getResult } from './utils';
 
@@ -17,9 +17,15 @@ const WordBox = ({
   showAnswers,
   isWordCorrect,
 }: Props) => {
-  const wordColor = getWordColor(isWordSelected);
-  const { msg: resultMsg, color: resultColor } = getResult(isWordCorrect);
-  const onWordClick = () => {
+  const wordColor = useMemo(() => {
+    return getWordColor(isWordSelected);
+  }, [isWordSelected]);
+
+  const { msg: resultMsg, color: resultColor } = useMemo(() => {
+    return getResult(isWordCorrect);
+  }, [isWordCorrect]);
+
+  const onWordClick = useCallback(() => {
     setSelectedWords((prev) => {
       if (!isWordSelected) {
         return [...prev, word];
@@ -27,7 +33,8 @@ const WordBox = ({
         return prev.filter((w) => w !== word);
       }
     });
-  };
+  }, [isWordSelected, setSelectedWords, word]);
+
   return (
     <>
       {showAnswers ? (
