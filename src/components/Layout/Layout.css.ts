@@ -9,7 +9,7 @@ interface FlexBoxProps {
 }
 
 export const Container = styled(Paper)`
-  height: 70vh;
+  min-height: 70vh;
   margin: 5%;
   padding: 2%;
   display: flex;

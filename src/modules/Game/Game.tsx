@@ -1,6 +1,6 @@
 import Container from 'components/Layout/Container';
 import { mockedQuestions } from 'data/mockedQuestions';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import * as S from './Game.css';
 import { getRandomQuestion } from 'utils/getRandomQuestion';
 import WordBox from './components/WordBox';
@@ -30,7 +30,7 @@ const Game = ({ updateUserScore, user }: Props) => {
     return getRandomQuestion(mockedQuestions);
   }, []);
 
-  const checkAnswers = () => {
+  const checkAnswers = useCallback(() => {
     setShowAnswers(true);
     const score = getScore(randomQuestion, selectedWords);
     if (user) {
@@ -40,11 +40,11 @@ const Game = ({ updateUserScore, user }: Props) => {
       };
       updateUserScore(updatedUser);
     }
-  };
+  }, [setShowAnswers, randomQuestion, selectedWords, updateUserScore, user]);
 
-  const finishGame = () => {
+  const finishGame = useCallback(() => {
     navigate(URL.SCORE);
-  };
+  }, [navigate]);
 
   return (
     <Container>

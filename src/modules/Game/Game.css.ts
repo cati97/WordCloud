@@ -27,9 +27,9 @@ export const WordsBox = styled.div`
   flex-wrap: wrap;
   border: 2px solid black;
   border-radius: 5px;
-  height: 70%;
+  min-height: 50vh;
   width: 45vw;
-  margin: 20px 0;
+  margin: 50px 0;
 `;
 
 export const WordBox = styled.div<WordBoxProps>`
