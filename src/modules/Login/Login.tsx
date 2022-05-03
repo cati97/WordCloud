@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import TextInput from 'components/Inputs/TextInput';
-import { Control, useForm, FieldValues } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { login } from 'store/actions/index';
 import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
