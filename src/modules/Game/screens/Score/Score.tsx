@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { GameState } from 'store/store.types';
 import { User } from 'utils/types/User';
-import * as S from './Score.css';
 import * as URL from 'router/url';
+import FlexBox from 'components/Layout/FlexBox';
 
 interface Props {
   user: User | null | undefined;
@@ -21,7 +21,11 @@ const Score = ({ user }: Props) => {
   return (
     <Container>
       {user ? (
-        <S.ScoreBox>
+        <FlexBox
+          height='30vh'
+          justifyContent='space-evenly'
+          flexDirection='column'
+        >
           <Typography variant='h4'>
             Congratulations, {user.nickname}!
           </Typography>
@@ -29,14 +33,18 @@ const Score = ({ user }: Props) => {
           <Typography color='primary' variant='h4'>
             {user.score} points
           </Typography>
-        </S.ScoreBox>
+        </FlexBox>
       ) : (
-        <S.ScoreBox>
+        <FlexBox
+          height='30vh'
+          justifyContent='space-evenly'
+          flexDirection='column'
+        >
           <Typography variant='h4'>You are not logged in!</Typography>
           <Button variant='outlined' onClick={navigateHome}>
             Login
           </Button>
-        </S.ScoreBox>
+        </FlexBox>
       )}
     </Container>
   );

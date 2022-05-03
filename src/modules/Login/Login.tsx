@@ -1,7 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import TextInput from 'components/Inputs/TextInput';
 import { FieldValues, useForm } from 'react-hook-form';
-import * as S from './Login.css';
 import { login } from 'store/actions/index';
 import { connect } from 'react-redux';
 import { User } from 'utils/types/User';
@@ -11,6 +10,7 @@ import Container from 'components/Layout/Container';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import * as URL from 'router/url';
+import FlexBox from 'components/Layout/FlexBox';
 
 interface Props {
   login: (data: User) => void;
@@ -35,7 +35,11 @@ const Login = ({ login }: Props) => {
 
   return (
     <Container>
-      <S.LoginForm>
+      <FlexBox
+        height='30vh'
+        justifyContent='space-evenly'
+        flexDirection='column'
+      >
         <Typography variant='h3'>Wordcloud game</Typography>
         <TextInput
           control={control}
@@ -46,7 +50,7 @@ const Login = ({ login }: Props) => {
         <Button variant='outlined' onClick={handleSubmit(onSubmit)}>
           Play
         </Button>
-      </S.LoginForm>
+      </FlexBox>
     </Container>
   );
 };
